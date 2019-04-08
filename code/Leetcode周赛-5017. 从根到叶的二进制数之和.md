@@ -10,7 +10,7 @@
 
 **示例：**
 
-![1554715812239](G:\typora图片\1554715812239.png)
+![image](https://github.com/lihao056/Leetcode/blob/master/code/picture/1554715812239.png)
 
 ```
 输入：[1,0,1,0,1,0,1]
