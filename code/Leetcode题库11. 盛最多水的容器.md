@@ -4,7 +4,7 @@
 
 **说明：**你不能倾斜容器，且 *n* 的值至少为 2。
 
-![1554702811827](G:\typora图片\1554702811827.png)
+![1554702811827](https://github.com/lihao056/Leetcode/blob/master/code/picture/1554702811827.png)
 
 
 
