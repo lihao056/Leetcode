@@ -70,3 +70,60 @@ class Solution:
         return final
 ```
 
+2019.4.12更新
+
+​	由于考虑到通用性，如n数相加的情况，上述的方法就会失效(如果愿意把所有的情况都考虑到的话则另说)，所以要使用一种更加通用的方法。
+
+​	考虑直接通过去重的方式进行三数之和的判断(参照网络上的方法)。
+
+​	1.对数组进行排列，可得到一个从小到大的数组。
+
+​	2.第一层遍历，从数组中顺序抽取一个元素，由于列表经过排序，所以若该元素是第一个出现的话，它的前一位必定不同，如果前一位相同，说明这种情况考虑过了，直接跳过进行下一个元素判断。
+
+​	3.当第一层循环抽取元素之后，可以对第二层循环进行抽取。由于需要不重复的数组，所以将位于第一层循环中抽取的元素前的元素舍弃(不考虑它们)，并考虑接下来的两数之和的问题。
+
+​	4.两数和问题就考虑两个指针，一个在头，一个在尾，向中间靠拢。由于需要考虑不重复的情况，我们应该先判断两数之和是否符合，若小于或者大于，则分别移动首尾指针，若相等的话，需要做以下的一些处理
+
+​	(1)将相等的情况存储到最终数组(这是第一次出现，所以可能不重复)
+
+​	(2)若头指针指向的元素和下一个元素相同，则将指针指向下一个元素，并继续判断(去重复的步骤)
+
+​	(3)尾指针也是做相同的处理
+
+​	(4)去重处理完之后，则将头指针指向下一个元素，尾指针指向前一个元素，继续寻找另一个数组。
+
+程序如下
+
+```python
+class Solution:
+    def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        target = 0
+        nums = sorted(nums)
+        final = []
+        for pst_0, item_0 in enumerate(nums):
+            # 考虑多种情况，当处理到倒数第二个数，则直接跳出循环
+            if pst_0 == len(nums) - 2:break
+            # 考虑pst_0 == 0的情况
+            if pst_0 > 0 and item_0 == nums[pst_0 - 1]: continue 
+            # 转换为两数和，设置首尾指针
+            twoSum = target - item_0
+            les = pst_0 + 1
+            big = len(nums) - 1
+            while les < big:
+				# 判断数组的情况，小于两数和，则首指针相加
+                if nums[big] + nums[les] < twoSum:  les += 1
+                elif nums[big] + nums[les] > twoSum:  big -= 1
+                else:
+                    # 对应于4的处理，注意去重的时候注意判断首尾指针的位置，否则会出现错误
+                    final.append([item_0, nums[big], nums[les]])
+                    while les < big and nums[les] == nums[les + 1]: les += 1
+                    while big > les and nums[big] == nums[big - 1]: big -= 1
+                    les += 1
+                    big -= 1
+        return final
+```
+
