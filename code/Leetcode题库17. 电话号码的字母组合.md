@@ -4,7 +4,7 @@
 
 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。
 
-![1555048271099](G:\typora图片\1555048271099.png)
+![1555048271099](https://github.com/lihao056/Leetcode/blob/master/code/picture/1555048271099.png)
 
 **示例:**
 
