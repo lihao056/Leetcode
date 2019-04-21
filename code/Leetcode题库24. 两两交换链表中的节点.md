@@ -16,7 +16,7 @@
 
 ​	对于链表交替需要考虑的是指向链表的表头的位置。假设设置一个final链表，将其的next节点指向head链表。后单独进行交换的话会出现以下结果
 
-​	![1555552467443](G:\typora图片\1555552467443.png)
+​	![1555552467443](https://github.com/lihao056/Leetcode/blob/master/code/picture/1555552467443.png)
 
 ​	可以看到，我的final节点会将删除链表2。所以需要考虑增加一个record节点替代final节点操作。
 
@@ -24,7 +24,7 @@
 
 ​	整个过程如下
 
-![1555553338461](G:\typora图片\1555553338461.png)
+![1555553338461](https://github.com/lihao056/Leetcode/blob/master/code/picture/1555553338461.png)
 
 第一版：
 
